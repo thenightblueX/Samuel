@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="4.0">
+    <attributes>
+        <attribute name="name" value="Jogo Adivinhacao"/>
+        <attribute name="authors" value="AI Assistant"/>
+        <attribute name="about" value="Jogo de adivinhacao adaptado de pseudocodigo."/>
+        <attribute name="saved" value="2026-10-22 05:00:00 PM"/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="segredo, tentativas, palpite" type="Integer" array="False" size=""/>
+            <declare name="acertou" type="Boolean" array="False" size=""/>
+            <assign variable="segredo" expression="Random(100) + 1"/>
+            <assign variable="tentativas" expression="0"/>
+            <assign variable="acertou" expression="false"/>
+            <while expression="tentativas &lt; 7 and acertou == false">
+                <output expression="&quot;Digite seu palpite (tentativa &quot; &amp; (tentativas + 1) &amp; &quot; de 7):&quot;" newline="True"/>
+                <input variable="palpite"/>
+                <assign variable="tentativas" expression="tentativas + 1"/>
+                <if expression="palpite == segredo">
+                    <then>
+                        <output expression="&quot;Acertou!&quot;" newline="True"/>
+                        <assign variable="acertou" expression="true"/>
+                    </then>
+                    <else>
+                        <if expression="palpite &lt; segredo">
+                            <then>
+                                <output expression="&quot;O número é maior&quot;" newline="True"/>
+                            </then>
+                            <else>
+                                <output expression="&quot;O número é menor&quot;" newline="True"/>
+                            </else>
+                        </if>
+                    </else>
+                </if>
+            </while>
+            <if expression="acertou == false">
+                <then>
+                    <output expression="&quot;Você não acertou, o segredo era: &quot; &amp; segredo" newline="True"/>
+                </then>
+                <else/>
+            </if>
+        </body>
+    </function>
+</flowgorithm>
